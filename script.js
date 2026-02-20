@@ -68,6 +68,14 @@ function toggleFaq(idx) {
 
 async function submitForm(e) {
   e.preventDefault();
+
+  // Anti-spam rate limit (5 seconds)
+  if (window.lastSubmit && Date.now() - window.lastSubmit < 5000) {
+    alert("Please wait a few seconds before submitting again.");
+    return;
+  }
+  window.lastSubmit = Date.now();
+
   const form = e.target;
 
   const data = {
@@ -110,6 +118,13 @@ async function submitForm(e) {
 
 async function submitContact(e) {
   e.preventDefault();
+
+  // Anti-spam rate limit (5 seconds)
+  if (window.lastSubmit && Date.now() - window.lastSubmit < 5000) {
+    alert("Please wait a few seconds before submitting again.");
+    return;
+  }
+  window.lastSubmit = Date.now();
   const form = e.target;
 
   const data = {
