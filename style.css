@@ -371,7 +371,7 @@ a {
 .hero-title .highlight::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: 4px;
   left: 0;
   right: 0;
   height: 6px;
