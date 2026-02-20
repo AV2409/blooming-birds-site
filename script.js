@@ -71,6 +71,7 @@ async function submitForm(e) {
   const form = e.target;
 
   const data = {
+    formType: "enrollment", // 👈 ADD THIS LINE
     childFirstName: form.childFirstName.value,
     childLastName: form.childLastName.value,
     dob: form.dob.value,
@@ -81,15 +82,13 @@ async function submitForm(e) {
     startDate: form.startDate.value,
     tourDate: form.tourDate.value,
     notes: form.notes.value,
-    createdAt: fb.serverTimestamp(),
+    createdAt: new Date().toISOString(), // safer for Sheets
   };
 
   try {
-    // Save to Firebase
     await fb.addDoc(fb.collection(db, "enrollments"), data);
 
-    // Send to Google Sheets
-    await fetch(
+    fetch(
       "https://script.google.com/macros/s/AKfycbyhJHsNEVAOghfSxfRCQko7_V0fa0dvMyTwfaE5M0HNvfz3SSv-_YyyVaSynM8-iwtc/exec",
       {
         method: "POST",
@@ -114,15 +113,26 @@ async function submitContact(e) {
   const form = e.target;
 
   const data = {
+    formType: "message",
     name: form.querySelectorAll("input")[0].value,
     email: form.querySelectorAll("input")[1].value,
     subject: form.querySelector("select").value,
     message: form.querySelector("textarea").value,
-    createdAt: fb.serverTimestamp(),
+    createdAt: new Date().toISOString(),
   };
 
   try {
+    // Save to Firebase (optional)
     await fb.addDoc(fb.collection(db, "messages"), data);
+
+    // Send to Google Sheets
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyhJHsNEVAOghfSxfRCQko7_V0fa0dvMyTwfaE5M0HNvfz3SSv-_YyyVaSynM8-iwtc/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+      },
+    );
 
     const notif = document.getElementById("notification");
     notif.textContent = "✅ Message sent successfully!";
