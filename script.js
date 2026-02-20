@@ -66,27 +66,36 @@ function toggleFaq(idx) {
   item.classList.toggle("open");
 }
 
-// ===== FORM SUBMIT =====
 async function submitForm(e) {
   e.preventDefault();
   const form = e.target;
 
   const data = {
-    childFirstName: form.querySelectorAll("input")[0].value,
-    childLastName: form.querySelectorAll("input")[1].value,
-    dob: form.querySelectorAll("input")[2].value,
-    program: form.querySelector("select").value,
-    parentName: form.querySelectorAll("input")[3].value,
-    phone: form.querySelectorAll("input")[4].value,
-    email: form.querySelectorAll("input")[5].value,
-    startDate: form.querySelectorAll("input")[6].value,
-    tourDate: form.querySelectorAll("input")[7].value,
-    notes: form.querySelector("textarea").value,
+    childFirstName: form.childFirstName.value,
+    childLastName: form.childLastName.value,
+    dob: form.dob.value,
+    program: form.program.value,
+    parentName: form.parentName.value,
+    phone: form.phone.value,
+    email: form.email.value,
+    startDate: form.startDate.value,
+    tourDate: form.tourDate.value,
+    notes: form.notes.value,
     createdAt: fb.serverTimestamp(),
   };
 
   try {
+    // Save to Firebase
     await fb.addDoc(fb.collection(db, "enrollments"), data);
+
+    // Send to Google Sheets
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbyhJHsNEVAOghfSxfRCQko7_V0fa0dvMyTwfaE5M0HNvfz3SSv-_YyyVaSynM8-iwtc/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+      },
+    );
 
     const notif = document.getElementById("notification");
     notif.textContent = "🎉 Application submitted successfully!";
