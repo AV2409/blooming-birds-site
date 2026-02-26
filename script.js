@@ -10,21 +10,39 @@ window.addEventListener("scroll", () => {
     window.scrollY / (document.body.scrollHeight - window.innerHeight);
   scrollBird.style.top = scrollPct * 90 + "vh";
   scrollBird.style.right = scrollPct > 0.05 ? "18px" : "-60px";
-
-  // Reveal elements
-  document.querySelectorAll(".reveal").forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 60) el.classList.add("visible");
-  });
 });
 
 // ===== MOBILE MENU =====
-document.getElementById("hamburger").addEventListener("click", () => {
-  document.getElementById("mobileMenu").classList.add("open");
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+
+hamburger.addEventListener("click", () => {
+  const opened = mobileMenu.classList.toggle("open");
+  hamburger.setAttribute("aria-expanded", opened);
+  if (opened) {
+    const first = mobileMenu.querySelector(
+      "a, button, [tabindex]:not([tabindex='-1'])",
+    );
+    first?.focus();
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+    hamburger.focus();
+  }
 });
+
 function closeMobileMenu() {
-  document.getElementById("mobileMenu").classList.remove("open");
+  mobileMenu.classList.remove("open");
+  hamburger.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+  hamburger.focus();
 }
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && mobileMenu.classList.contains("open")) {
+    closeMobileMenu();
+  }
+});
 
 // ===== PROGRAMS TABS =====
 function showProgram(id, btn) {
@@ -57,8 +75,26 @@ function prevSlide() {
   goSlide(currentSlide - 1);
 }
 
-// Auto-advance carousel
-setInterval(nextSlide, 5000);
+let carouselInterval = null;
+function startCarousel() {
+  carouselInterval = setInterval(nextSlide, 5000);
+}
+function stopCarousel() {
+  clearInterval(carouselInterval);
+}
+
+const testimonialsSection = document.querySelector(".testimonials");
+if (testimonialsSection) {
+  testimonialsSection.addEventListener("mouseenter", stopCarousel);
+  testimonialsSection.addEventListener("mouseleave", startCarousel);
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) stopCarousel();
+  else startCarousel();
+});
+
+startCarousel();
 
 // ===== FAQ =====
 function toggleFaq(idx) {
@@ -76,12 +112,24 @@ async function submitForm(e) {
   let hasError = false;
   const nameRegexEnroll = /^[a-zA-Z]+([' \-][a-zA-Z]+)*$/;
 
-  if (!form.childFirstName.value.trim() || !nameRegexEnroll.test(form.childFirstName.value.trim())) {
-    showFieldError("childFirstName", "Please enter a valid first name (letters only).");
+  if (
+    !form.childFirstName.value.trim() ||
+    !nameRegexEnroll.test(form.childFirstName.value.trim())
+  ) {
+    showFieldError(
+      "childFirstName",
+      "Please enter a valid first name (letters only).",
+    );
     hasError = true;
   }
-  if (!form.childLastName.value.trim() || !nameRegexEnroll.test(form.childLastName.value.trim())) {
-    showFieldError("childLastName", "Please enter a valid last name (letters only).");
+  if (
+    !form.childLastName.value.trim() ||
+    !nameRegexEnroll.test(form.childLastName.value.trim())
+  ) {
+    showFieldError(
+      "childLastName",
+      "Please enter a valid last name (letters only).",
+    );
     hasError = true;
   }
   if (!form.dob.value) {
@@ -95,11 +143,16 @@ async function submitForm(e) {
     today.setHours(0, 0, 0, 0);
     // Child cannot be born in the future
     if (dob >= today) {
-      showFieldError("dobInput", "Date of birth cannot be today or in the future.");
+      showFieldError(
+        "dobInput",
+        "Date of birth cannot be today or in the future.",
+      );
       hasError = true;
     } else {
-      const ageMonths = (today.getFullYear() - dob.getFullYear()) * 12 + (today.getMonth() - dob.getMonth())
-        - (today.getDate() < dob.getDate() ? 1 : 0);
+      const ageMonths =
+        (today.getFullYear() - dob.getFullYear()) * 12 +
+        (today.getMonth() - dob.getMonth()) -
+        (today.getDate() < dob.getDate() ? 1 : 0);
       if (ageMonths < 6) {
         showFieldError("dobInput", "Child must be at least 6 months old.");
         hasError = true;
@@ -114,21 +167,33 @@ async function submitForm(e) {
     hasError = true;
   }
   const nameRegex = /^[a-zA-Z]+([ '\-][a-zA-Z]+)*$/;
-  if (!form.parentName.value.trim() || !nameRegex.test(form.parentName.value.trim())) {
+  if (
+    !form.parentName.value.trim() ||
+    !nameRegex.test(form.parentName.value.trim())
+  ) {
     showFieldError("parentName", "Please enter a valid name (letters only).");
     hasError = true;
   }
-  if (!form.phone.value.trim() || !/^[\d\s()\-+]{7,}$/.test(form.phone.value.trim())) {
+  if (
+    !form.phone.value.trim() ||
+    !/^[\d\s()\-+]{7,}$/.test(form.phone.value.trim())
+  ) {
     showFieldError("phone", "Please enter a valid phone number.");
     hasError = true;
   }
-  if (!form.email.value.trim() || !/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9\-]{3,}(\.[a-zA-Z0-9\-]+)*\.[a-zA-Z]{2,}$/.test(form.email.value.trim())) {
+  if (
+    !form.email.value.trim() ||
+    !/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9\-]{3,}(\.[a-zA-Z0-9\-]+)*\.[a-zA-Z]{2,}$/.test(
+      form.email.value.trim(),
+    )
+  ) {
     showFieldError("email", "Please enter a valid email address.");
     hasError = true;
   }
   // Start date must be today or future (optional field but if filled must be valid)
   if (form.startDate.value) {
-    const today = new Date(); today.setHours(0,0,0,0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     const [sy, sm, sd] = form.startDate.value.split("-").map(Number);
     const startDate = new Date(sy, sm - 1, sd);
     if (startDate < today) {
@@ -138,7 +203,8 @@ async function submitForm(e) {
   }
   // Tour date must be today or future (optional field but if filled must be valid)
   if (form.tourDate.value) {
-    const today = new Date(); today.setHours(0,0,0,0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
     const [ty, tm, td] = form.tourDate.value.split("-").map(Number);
     const tourDate = new Date(ty, tm - 1, td);
     if (tourDate < today) {
@@ -149,14 +215,20 @@ async function submitForm(e) {
   // Terms & conditions must be checked
   const termsBox = document.getElementById("termsCheckbox");
   if (!termsBox || !termsBox.checked) {
-    showFieldError("termsCheckbox", "You must agree to the Terms & Privacy Policy.");
+    showFieldError(
+      "termsCheckbox",
+      "You must agree to the Terms & Privacy Policy.",
+    );
     hasError = true;
   }
 
   if (hasError) {
     // Scroll to first error
-    const firstError = document.querySelector(".input-error, .form-error:not(:empty)");
-    if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+    const firstError = document.querySelector(
+      ".input-error, .form-error:not(:empty)",
+    );
+    if (firstError)
+      firstError.scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
 
@@ -185,7 +257,10 @@ async function submitForm(e) {
   try {
     // Save to Firebase only if it has initialised
     if (window.fb && window.db) {
-      await window.fb.addDoc(window.fb.collection(window.db, "enrollments"), data);
+      await window.fb.addDoc(
+        window.fb.collection(window.db, "enrollments"),
+        data,
+      );
     }
 
     // Always send to Google Sheets regardless
@@ -225,17 +300,24 @@ async function submitContact(e) {
   // Name: at least 2 chars, must not be all the same character repeated
   const nameRegex = /^[a-zA-Z]+([ '\-][a-zA-Z]+)*$/;
   if (!nameVal || nameVal.length < 2 || !nameRegex.test(nameVal)) {
-    showFieldError("contactName", "Please enter a valid full name (letters only).");
+    showFieldError(
+      "contactName",
+      "Please enter a valid full name (letters only).",
+    );
     hasError = true;
   }
   // Strict email: domain must be at least 3 chars, TLD at least 2 chars
-  const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9\-]{3,}(\.[a-zA-Z0-9\-]+)*\.[a-zA-Z]{2,}$/;
+  const emailRegex =
+    /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9\-]{3,}(\.[a-zA-Z0-9\-]+)*\.[a-zA-Z]{2,}$/;
   if (!emailVal || !emailRegex.test(emailVal)) {
     showFieldError("contactEmail", "Please enter a valid email address.");
     hasError = true;
   }
   if (!msgVal || msgVal.length < 10) {
-    showFieldError("contactMessage", "Please enter a message (at least 10 characters).");
+    showFieldError(
+      "contactMessage",
+      "Please enter a message (at least 10 characters).",
+    );
     hasError = true;
   }
   if (hasError) return;
@@ -313,12 +395,27 @@ function clearContactErrors() {
 }
 
 function clearEnrollErrors() {
-  ["childFirstName","childLastName","dobInput","program","parentName","phone","email","startDate","tourDate","termsCheckbox"].forEach(clearFieldError);
+  [
+    "childFirstName",
+    "childLastName",
+    "dobInput",
+    "program",
+    "parentName",
+    "phone",
+    "email",
+    "startDate",
+    "tourDate",
+    "termsCheckbox",
+  ].forEach(clearFieldError);
 }
 
 // Clear error on input
 document.addEventListener("input", (e) => {
-  if (e.target.classList.contains("form-input") || e.target.classList.contains("form-select") || e.target.classList.contains("form-textarea")) {
+  if (
+    e.target.classList.contains("form-input") ||
+    e.target.classList.contains("form-select") ||
+    e.target.classList.contains("form-textarea")
+  ) {
     clearFieldError(e.target.id || e.target.name);
   }
 });
@@ -329,10 +426,6 @@ const _origSubmitForm = window.submitForm;
 
 // ===== SMOOTH INIT =====
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".reveal").forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight) el.classList.add("visible");
-  });
   // Init scroll bird
   document.getElementById("scrollBird").style.top = "20vh";
 
@@ -353,9 +446,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Set start date and tour date minimums to today
-  document.querySelectorAll("input[name='startDate'], input[name='tourDate']").forEach(input => {
-    input.min = new Date().toISOString().split("T")[0];
-  });
+  document
+    .querySelectorAll("input[name='startDate'], input[name='tourDate']")
+    .forEach((input) => {
+      input.min = new Date().toISOString().split("T")[0];
+    });
+
+  // Reveal elements with IntersectionObserver
+  const reveals = document.querySelectorAll(".reveal");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 },
+  );
+  reveals.forEach((el) => io.observe(el));
 });
 
 // ===== GALLERY LIGHTBOX HINT =====

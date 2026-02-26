@@ -79,7 +79,8 @@
         <a href="#contact" class="btn btn-secondary btn-sm">📍 Schedule Tour</a>
         <a href="#enrollment" class="btn btn-primary btn-sm">Enroll Now ✨</a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button type="button" class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu"
+        aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -1309,7 +1310,7 @@
   </footer>
 
   <!-- ===== NOTIFICATION ===== -->
-  <div class="notification" id="notification">✅ Message sent! We'll be in touch within 24 hours.</div>
+  <div id="notification" role="status" aria-live="polite" aria-atomic="true" class="notification"></div>
 
   <!-- ===== LIVE CHAT ===== -->
   <div class="live-chat">
@@ -1350,7 +1351,7 @@
     window.fb = { collection, addDoc, serverTimestamp };
   </script>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
 
 </body>
