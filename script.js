@@ -56,46 +56,6 @@ function showProgram(id, btn) {
   btn.classList.add("active");
 }
 
-// ===== TESTIMONIALS CAROUSEL =====
-let currentSlide = 0;
-const slides = document.querySelectorAll(".testimonial-slide");
-const dots = document.querySelectorAll(".carousel-dot");
-
-function goSlide(n) {
-  slides[currentSlide].classList.remove("active");
-  dots[currentSlide].classList.remove("active");
-  currentSlide = (n + slides.length) % slides.length;
-  slides[currentSlide].classList.add("active");
-  dots[currentSlide].classList.add("active");
-}
-function nextSlide() {
-  goSlide(currentSlide + 1);
-}
-function prevSlide() {
-  goSlide(currentSlide - 1);
-}
-
-let carouselInterval = null;
-function startCarousel() {
-  carouselInterval = setInterval(nextSlide, 5000);
-}
-function stopCarousel() {
-  clearInterval(carouselInterval);
-}
-
-const testimonialsSection = document.querySelector(".testimonials");
-if (testimonialsSection) {
-  testimonialsSection.addEventListener("mouseenter", stopCarousel);
-  testimonialsSection.addEventListener("mouseleave", startCarousel);
-}
-
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) stopCarousel();
-  else startCarousel();
-});
-
-startCarousel();
-
 // ===== FAQ =====
 function toggleFaq(idx) {
   const item = document.getElementById("faq-" + idx);

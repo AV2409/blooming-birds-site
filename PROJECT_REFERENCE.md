@@ -26,12 +26,11 @@ The main page is a single long landing page with anchor-based navigation:
 5. Team profiles.
 6. Programs section with four tabs.
 7. Gallery grid.
-8. Testimonials carousel.
-9. Enrollment form and FAQ accordion.
-10. Call-to-action strip.
-11. Contact information and contact form.
-12. Footer.
-13. Notification toast, chat widget, and floating scroll bird.
+8. Enrollment form and FAQ accordion.
+9. Call-to-action strip.
+10. Contact information and contact form.
+11. Footer.
+12. Notification toast, chat widget, and floating scroll bird.
 
 Current hero highlights are `5-Star Certified`, `First Aid Certified`, `ECE Certified`, and `Licensed Facility`.
 
@@ -43,7 +42,7 @@ Current hero highlights are `5-Star Certified`, `First Aid Certified`, `ECE Cert
 2. Firebase modules are imported from Google's CDN.
 3. Firebase initializes with the embedded project configuration.
 4. Firestore helpers are exposed as `window.db` and `window.fb`.
-5. `script.js` initializes navigation, carousel behavior, event handlers, date limits, and reveal animations.
+5. `script.js` initializes navigation, event handlers, date limits, and reveal animations.
 6. The current year is inserted into the main page footer.
 
 ### 3.2 Desktop Navigation
@@ -78,25 +77,14 @@ Available programs:
 - Preschool Prep.
 - After-School Club.
 
-### 3.5 Testimonial Carousel
-
-1. The first testimonial slide and first dot start active.
-2. `startCarousel()` advances the slide every five seconds.
-3. Previous and next buttons call `prevSlide()` and `nextSlide()`.
-4. Dots call `goSlide(index)`.
-5. Hovering over the testimonial section pauses the interval.
-6. Leaving the section starts the interval again.
-7. Switching away from the browser tab pauses the interval.
-8. Returning to the tab starts the interval again.
-
-### 3.6 FAQ Accordion
+### 3.5 FAQ Accordion
 
 1. Each FAQ button calls `toggleFaq(index)`.
 2. The corresponding `#faq-index` element toggles the `open` class.
 3. CSS expands or collapses the answer using `max-height` and padding.
 4. The arrow rotates when the item is open.
 
-### 3.7 Enrollment Form
+### 3.6 Enrollment Form
 
 1. The form calls `submitForm(event)` and prevents the default browser submission.
 2. Existing inline errors are cleared.
@@ -118,7 +106,7 @@ Available programs:
 14. A success toast is shown and the form is reset.
 15. Firebase errors enter the error handler and show an alert.
 
-### 3.8 Contact Form
+### 3.7 Contact Form
 
 1. The form calls `submitContact(event)` and prevents the default browser submission.
 2. Name, email, and message fields are validated.
@@ -130,40 +118,40 @@ Available programs:
 8. A success toast is shown and the form is reset.
 9. Firebase errors enter the error handler and show an alert.
 
-### 3.9 Form Error Clearing
+### 3.8 Form Error Clearing
 
 1. Input events are watched at the document level.
 2. For recognized form controls, the matching error class and error text are removed.
 3. Enrollment and contact forms use separate helper functions to clear all known errors before validation.
 
-### 3.10 Live Chat Widget
+### 3.9 Live Chat Widget
 
 1. The chat bubble is closed on initial load.
 2. Clicking the chat button toggles the `open` class.
 3. The button icon changes between chat and close symbols.
 4. The open bubble contains a generic email action.
 
-### 3.11 Gallery Interaction
+### 3.10 Gallery Interaction
 
 1. Gallery cards are clickable.
 2. Clicking a card reads its caption.
 3. The caption is displayed in the notification toast.
 4. No image modal or full-size image viewer is opened.
 
-### 3.12 Reveal Animations
+### 3.11 Reveal Animations
 
 1. Elements with the `reveal` class start transparent and shifted down.
 2. An `IntersectionObserver` watches those elements after DOM initialization.
 3. When an element enters the viewport, the `visible` class is added.
 4. The observer stops watching that element after it becomes visible.
 
-### 3.13 Scroll Bird
+### 3.12 Scroll Bird
 
 1. The scroll handler calculates the user's page scroll percentage.
 2. The bird's vertical position is mapped across approximately 90 viewport-height units.
 3. The bird moves off-screen near the top and appears on the right after the user scrolls slightly.
 
-### 3.14 Footer Year
+### 3.13 Footer Year
 
 1. On the current page, `#footerYear` is populated with the current year at runtime.
 2. The legacy page uses a hard-coded copyright year.
@@ -236,15 +224,14 @@ Available programs:
 - **No Firestore security rules are included**: access control cannot be reviewed or safely maintained from this repository.
 - **Firebase initialization is external and failure-prone**: the site depends on CDN module availability and client-side initialization at runtime.
 - **The legacy page duplicates the entire application**: shared content and behavior can diverge and fixes may only reach one entry point.
-- **Many claims appear unverified**: ratings, accreditation, family counts, staff credentials, pricing, and testimonials are hard-coded marketing content.
-- **Legal and social links are placeholders**: privacy policy, terms, sitemap, accessibility, review, and social links frequently use `href="#"`.
+- **Many claims appear unverified**: ratings, accreditation, family counts, staff credentials, and pricing are hard-coded marketing content.
+- **Legal and social links are placeholders**: privacy policy, terms, sitemap, accessibility, and social links frequently use `href="#"`.
 - **The advertised Stripe workflow does not exist**: the page claims Stripe-secured payments, but there is no Stripe integration.
 
 ### Medium
 
-- **Carousel timers can overlap**: repeated visibility and hover events can create multiple intervals because `startCarousel()` does not guard against an existing timer.
 - **Gallery is not a real lightbox**: clicking a gallery item only displays a toast caption.
-- **Accessibility semantics are incomplete**: tabs, FAQs, carousel slides, carousel dots, gallery items, and form errors lack complete ARIA relationships and state attributes.
+- **Accessibility semantics are incomplete**: tabs, FAQs, gallery items, and form errors lack complete ARIA relationships and state attributes.
 - **Mobile menu lacks a focus trap**: focus can escape the open menu even though body scrolling is disabled.
 - **Reduced motion is unsupported**: animations continue for users who request reduced motion.
 - **Focus outlines are removed from form controls**: the custom focus style may not provide sufficient contrast or consistency for all users.
@@ -287,8 +274,6 @@ Then manually open:
 - Verify desktop and mobile navigation.
 - Verify all anchor links.
 - Switch between all program tabs.
-- Use previous, next, and dot controls in the testimonial carousel.
-- Confirm carousel pause and resume behavior.
 - Open and close every FAQ item.
 - Submit invalid enrollment data and verify inline errors.
 - Submit valid enrollment data and inspect Firebase and Apps Script network requests.
@@ -307,7 +292,7 @@ Then manually open:
 - Confirm Apps Script accepts the request format.
 - Confirm Apps Script failures are surfaced to users.
 - Confirm no sensitive data is sent to unintended destinations.
-- Confirm email, phone, map, social, legal, and review links point to real destinations.
+- Confirm email, phone, map, social, and legal links point to real destinations.
 
 ## 8. Recommended Work Order
 
