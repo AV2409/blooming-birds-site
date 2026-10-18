@@ -775,6 +775,9 @@ a {
   gap: 28px;
 }
 .team-card {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
   background: white;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1904,7 +1907,7 @@ a {
     grid-template-columns: 1fr;
   }
   .team-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
   .about-values {
     grid-template-columns: 1fr;
