@@ -217,7 +217,6 @@ Available programs:
 - **Legacy forms are incompatible with `script.js`**: `blooming-birds-daycare.html` form fields lack the names and IDs accessed by the shared submission handlers, causing runtime errors on submit.
 - **Submission success is not delivery-confirmed**: the Google Apps Script request is neither awaited nor checked, so users can see success when the external submission fails.
 - **Sensitive data is sent directly from the browser**: child birth dates, allergy notes, parent contact details, and messages are sent to external services without visible server-side validation or repository-controlled security rules.
-- **Production content is geographically inconsistent**: `index.html` promotes Abbotsford, BC while visible address, footer, and contact copy still uses fictional Maplewood City, California details.
 
 ### High
 
