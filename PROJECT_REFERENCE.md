@@ -176,11 +176,6 @@ Available programs:
 - The map is a visual placeholder.
 - The map link currently points to generic Google Maps rather than a verified business location.
 
-### Cloudflare Email Decoding
-
-- The current page references Cloudflare's email decoding script and encoded email links.
-- Those paths are not present in this repository.
-
 ## 5. Responsive Workflows
 
 ### Desktop
@@ -218,7 +213,6 @@ Available programs:
 - **The legacy page duplicates the entire application**: shared content and behavior can diverge and fixes may only reach one entry point.
 - **Many claims appear unverified**: ratings, accreditation, family counts, staff credentials, and pricing are hard-coded marketing content.
 - **Legal and social links are placeholders**: privacy policy, terms, sitemap, accessibility, and social links frequently use `href="#"`.
-- **The advertised Stripe workflow does not exist**: the page claims Stripe-secured payments, but there is no Stripe integration.
 
 ### Medium
 
@@ -227,14 +221,12 @@ Available programs:
 - **Mobile menu lacks a focus trap**: focus can escape the open menu even though body scrolling is disabled.
 - **Reduced motion is unsupported**: animations continue for users who request reduced motion.
 - **Focus outlines are removed from form controls**: the custom focus style may not provide sufficient contrast or consistency for all users.
-- **Cloudflare email paths are deployment-dependent**: encoded email links may fail when served outside the original Cloudflare setup.
 - **The Open Graph image is missing**: `og-image.jpg` is referenced but not stored in the repository.
 - **The map link is generic**: users are not directed to the actual daycare location.
 
 ### Low
 
 - **Invalid CSS declaration**: `.footer-bottom` contains `flex-wrap: gap 12px`, which is ignored by browsers.
-- **Invalid inline color expressions**: declarations such as `var(--pink)+'44'` are not valid CSS color syntax.
 - **The tracked `.DS_Store` file is unrelated repository noise**: it should generally not be versioned.
 - **Large inline styles reduce maintainability**: much of the page styling is embedded directly in HTML instead of shared CSS classes.
 - **No automated quality gates exist**: there is no test, lint, formatting, accessibility, link, or deployment check.
@@ -291,7 +283,7 @@ Then manually open:
 2. Replace fictional or inconsistent business information with verified content.
 3. Define the real form backend and secure Firestore/Apps Script access.
 4. Make form delivery awaitable and failure-aware.
-5. Remove placeholder links and unsupported Stripe claims.
+5. Remove placeholder links.
 6. Fix accessibility semantics and keyboard behavior.
 7. Fix invalid CSS and add reduced-motion handling.
 8. Add automated checks and deployment documentation.
