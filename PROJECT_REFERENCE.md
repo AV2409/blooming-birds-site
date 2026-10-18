@@ -26,7 +26,7 @@ The main page is a single long landing page with anchor-based navigation:
 5. Team profiles.
 6. Programs section with four tabs.
 7. Gallery grid.
-8. Enrollment form and FAQ accordion.
+8. Enrollment form.
 9. Call-to-action strip.
 10. Contact information and contact form.
 11. Footer.
@@ -77,14 +77,7 @@ Available programs:
 - Preschool Prep.
 - After-School Club.
 
-### 3.5 FAQ Accordion
-
-1. Each FAQ button calls `toggleFaq(index)`.
-2. The corresponding `#faq-index` element toggles the `open` class.
-3. CSS expands or collapses the answer using `max-height` and padding.
-4. The arrow rotates when the item is open.
-
-### 3.6 Enrollment Form
+### 3.5 Enrollment Form
 
 1. The form calls `submitForm(event)` and prevents the default browser submission.
 2. Existing inline errors are cleared.
@@ -106,7 +99,7 @@ Available programs:
 14. A success toast is shown and the form is reset.
 15. Firebase errors enter the error handler and show an alert.
 
-### 3.7 Contact Form
+### 3.6 Contact Form
 
 1. The form calls `submitContact(event)` and prevents the default browser submission.
 2. Name, email, and message fields are validated.
@@ -118,40 +111,40 @@ Available programs:
 8. A success toast is shown and the form is reset.
 9. Firebase errors enter the error handler and show an alert.
 
-### 3.8 Form Error Clearing
+### 3.7 Form Error Clearing
 
 1. Input events are watched at the document level.
 2. For recognized form controls, the matching error class and error text are removed.
 3. Enrollment and contact forms use separate helper functions to clear all known errors before validation.
 
-### 3.9 Live Chat Widget
+### 3.8 Live Chat Widget
 
 1. The chat bubble is closed on initial load.
 2. Clicking the chat button toggles the `open` class.
 3. The button icon changes between chat and close symbols.
 4. The open bubble contains a generic email action.
 
-### 3.10 Gallery Interaction
+### 3.9 Gallery Interaction
 
 1. Gallery cards are clickable.
 2. Clicking a card reads its caption.
 3. The caption is displayed in the notification toast.
 4. No image modal or full-size image viewer is opened.
 
-### 3.11 Reveal Animations
+### 3.10 Reveal Animations
 
 1. Elements with the `reveal` class start transparent and shifted down.
 2. An `IntersectionObserver` watches those elements after DOM initialization.
 3. When an element enters the viewport, the `visible` class is added.
 4. The observer stops watching that element after it becomes visible.
 
-### 3.12 Scroll Bird
+### 3.11 Scroll Bird
 
 1. The scroll handler calculates the user's page scroll percentage.
 2. The bird's vertical position is mapped across approximately 90 viewport-height units.
 3. The bird moves off-screen near the top and appears on the right after the user scrolls slightly.
 
-### 3.13 Footer Year
+### 3.12 Footer Year
 
 1. On the current page, `#footerYear` is populated with the current year at runtime.
 2. The legacy page uses a hard-coded copyright year.
@@ -230,7 +223,7 @@ Available programs:
 ### Medium
 
 - **Gallery is not a real lightbox**: clicking a gallery item only displays a toast caption.
-- **Accessibility semantics are incomplete**: tabs, FAQs, gallery items, and form errors lack complete ARIA relationships and state attributes.
+- **Accessibility semantics are incomplete**: tabs, gallery items, and form errors lack complete ARIA relationships and state attributes.
 - **Mobile menu lacks a focus trap**: focus can escape the open menu even though body scrolling is disabled.
 - **Reduced motion is unsupported**: animations continue for users who request reduced motion.
 - **Focus outlines are removed from form controls**: the custom focus style may not provide sufficient contrast or consistency for all users.
@@ -273,7 +266,6 @@ Then manually open:
 - Verify desktop and mobile navigation.
 - Verify all anchor links.
 - Switch between all program tabs.
-- Open and close every FAQ item.
 - Submit invalid enrollment data and verify inline errors.
 - Submit valid enrollment data and inspect Firebase and Apps Script network requests.
 - Submit invalid and valid contact messages.

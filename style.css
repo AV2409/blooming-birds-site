@@ -1117,54 +1117,6 @@ a {
 .hours-val {
   color: var(--text-mid);
 }
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.faq-item {
-  background: var(--cream);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--sky-light);
-  overflow: hidden;
-}
-.faq-q {
-  width: 100%;
-  padding: 16px 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.95rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--text-dark);
-}
-.faq-q .faq-arrow {
-  transition: transform 0.3s;
-  font-size: 0.8rem;
-}
-.faq-item.open .faq-arrow {
-  transform: rotate(180deg);
-}
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition:
-    max-height 0.35s ease,
-    padding 0.35s;
-  padding: 0 20px;
-  color: var(--text-mid);
-  font-size: 0.92rem;
-  line-height: 1.7;
-}
-.faq-item.open .faq-a {
-  max-height: 200px;
-  padding: 0 20px 16px;
-}
 .enroll-form {
   background: white;
   border-radius: var(--radius-lg);

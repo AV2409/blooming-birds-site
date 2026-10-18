@@ -56,12 +56,6 @@ function showProgram(id, btn) {
   btn.classList.add("active");
 }
 
-// ===== FAQ =====
-function toggleFaq(idx) {
-  const item = document.getElementById("faq-" + idx);
-  item.classList.toggle("open");
-}
-
 function getProgramAgeRange(program) {
   if (program.includes("Infant")) {
     return { min: 6, max: 18, minLabel: "6 months", maxLabel: "18 months" };
