@@ -613,6 +613,11 @@ a {
   left: -32px;
   animation-delay: 0.8s;
 }
+.hero-float-card-4 {
+  bottom: -18px;
+  left: -24px;
+  animation-delay: 2.3s;
+}
 @keyframes floatCard {
   0%,
   100% {

@@ -102,6 +102,22 @@ function toggleFaq(idx) {
   item.classList.toggle("open");
 }
 
+function getProgramAgeRange(program) {
+  if (program.includes("Infant")) {
+    return { min: 6, max: 18, minLabel: "6 months", maxLabel: "18 months" };
+  }
+  if (program.includes("Toddler")) {
+    return { min: 18, max: 36, minLabel: "18 months", maxLabel: "3 years" };
+  }
+  if (program.includes("Preschool")) {
+    return { min: 36, max: 60, minLabel: "3 years", maxLabel: "5 years" };
+  }
+  if (program.includes("After-School")) {
+    return { min: 60, max: 144, minLabel: "5 years", maxLabel: "12 years" };
+  }
+  return { min: 6, max: 144, minLabel: "6 months", maxLabel: "12 years" };
+}
+
 async function submitForm(e) {
   e.preventDefault();
 
@@ -132,6 +148,12 @@ async function submitForm(e) {
     );
     hasError = true;
   }
+  const programValue = form.program.value.trim();
+  if (!programValue) {
+    showFieldError("program", "Please select a program.");
+    hasError = true;
+  }
+  const ageRange = getProgramAgeRange(programValue);
   if (!form.dob.value) {
     showFieldError("dobInput", "Date of birth is required.");
     hasError = true;
@@ -153,18 +175,20 @@ async function submitForm(e) {
         (today.getFullYear() - dob.getFullYear()) * 12 +
         (today.getMonth() - dob.getMonth()) -
         (today.getDate() < dob.getDate() ? 1 : 0);
-      if (ageMonths < 6) {
-        showFieldError("dobInput", "Child must be at least 6 months old.");
+      if (ageMonths < ageRange.min) {
+        showFieldError(
+          "dobInput",
+          `Child must be at least ${ageRange.minLabel} old for this program.`,
+        );
         hasError = true;
-      } else if (ageMonths > 72) {
-        showFieldError("dobInput", "Child must be 6 years old or younger.");
+      } else if (ageMonths > ageRange.max) {
+        showFieldError(
+          "dobInput",
+          `Child must be ${ageRange.maxLabel} or younger for this program.`,
+        );
         hasError = true;
       }
     }
-  }
-  if (!form.program.value) {
-    showFieldError("program", "Please select a program.");
-    hasError = true;
   }
   const nameRegex = /^[a-zA-Z]+([ '\-][a-zA-Z]+)*$/;
   if (
@@ -424,6 +448,42 @@ document.addEventListener("input", (e) => {
 const _origSubmitForm = window.submitForm;
 // Enhanced submitForm with inline validation is defined below and overrides the above
 
+function formatDateInput(date) {
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${date.getFullYear()}-${month}-${day}`;
+}
+
+function monthsAgo(date, months) {
+  const shifted = new Date(date);
+  const originalDay = shifted.getDate();
+  shifted.setDate(1);
+  shifted.setMonth(shifted.getMonth() - months);
+  const lastDay = new Date(
+    shifted.getFullYear(),
+    shifted.getMonth() + 1,
+    0,
+  ).getDate();
+  shifted.setDate(Math.min(originalDay, lastDay));
+  return shifted;
+}
+
+function updateDobBounds() {
+  const dobInput = document.getElementById("dobInput");
+  if (!dobInput) return;
+
+  const programInput = document.getElementById("program");
+  const ageRange = getProgramAgeRange(programInput?.value || "");
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const minDate = monthsAgo(today, ageRange.max);
+  const maxDate = monthsAgo(today, ageRange.min);
+
+  dobInput.min = formatDateInput(minDate);
+  dobInput.max = formatDateInput(maxDate);
+}
+
 // ===== SMOOTH INIT =====
 document.addEventListener("DOMContentLoaded", () => {
   // Init scroll bird
@@ -433,17 +493,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const footerYear = document.getElementById("footerYear");
   if (footerYear) footerYear.textContent = "© " + new Date().getFullYear();
 
-  // Set DOB min/max (child must be 6 months to 5 years old)
-  const dobInput = document.getElementById("dobInput");
-  if (dobInput) {
-    const today = new Date();
-    const maxDate = new Date(today);
-    maxDate.setMonth(maxDate.getMonth() - 6); // at least 6 months old
-    const minDate = new Date(today);
-    minDate.setFullYear(minDate.getFullYear() - 6); // no older than 6 years
-    dobInput.max = maxDate.toISOString().split("T")[0];
-    dobInput.min = minDate.toISOString().split("T")[0];
-  }
+  // Set DOB bounds from the selected program's age range.
+  const programInput = document.getElementById("program");
+  programInput?.addEventListener("change", updateDobBounds);
+  updateDobBounds();
 
   // Set start date and tour date minimums to today
   document
