@@ -28,11 +28,10 @@ The main page is a single long landing page with anchor-based navigation:
 7. Gallery grid.
 8. Testimonials carousel.
 9. Enrollment form and FAQ accordion.
-10. Blog/resource cards.
-11. Call-to-action strip.
-12. Contact information and contact form.
-13. Footer.
-14. Notification toast, chat widget, and floating scroll bird.
+10. Call-to-action strip.
+11. Contact information and contact form.
+12. Footer.
+13. Notification toast, chat widget, and floating scroll bird.
 
 Current hero highlights are `5-Star Certified`, `First Aid Certified`, `ECE Certified`, and `Licensed Facility`.
 
@@ -219,7 +218,7 @@ Available programs:
 - At 768 pixels, the mobile menu replaces desktop navigation.
 - Forms become single-column.
 - Gallery becomes two columns.
-- Blog and footer sections stack.
+- Footer sections stack.
 - At 480 pixels, gallery and team cards become single-column.
 - Large buttons become full-width.
 
@@ -238,7 +237,7 @@ Available programs:
 - **Firebase initialization is external and failure-prone**: the site depends on CDN module availability and client-side initialization at runtime.
 - **The legacy page duplicates the entire application**: shared content and behavior can diverge and fixes may only reach one entry point.
 - **Many claims appear unverified**: ratings, accreditation, family counts, staff credentials, pricing, and testimonials are hard-coded marketing content.
-- **Legal and social links are placeholders**: privacy policy, terms, sitemap, accessibility, blog, review, and social links frequently use `href="#"`.
+- **Legal and social links are placeholders**: privacy policy, terms, sitemap, accessibility, review, and social links frequently use `href="#"`.
 - **The advertised Stripe workflow does not exist**: the page claims Stripe-secured payments, but there is no Stripe integration.
 
 ### Medium
