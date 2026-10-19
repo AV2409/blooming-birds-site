@@ -880,8 +880,7 @@ a {
 }
 .prog-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: 1fr;
   align-items: start;
 }
 .prog-visual {
@@ -934,44 +933,6 @@ a {
   flex-shrink: 0;
   margin-top: 1px;
 }
-.prog-schedule {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: var(--shadow-card);
-}
-.prog-schedule h3 {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin-bottom: 24px;
-}
-.schedule-item {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px dashed var(--sky-light);
-}
-.schedule-time {
-  background: var(--sky-light);
-  border-radius: 99px;
-  padding: 4px 14px;
-  font-weight: 700;
-  font-size: 0.82rem;
-  color: var(--sky-dark);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.schedule-act {
-  font-size: 0.92rem;
-  color: var(--text-mid);
-  font-weight: 600;
-}
-.schedule-icon {
-  font-size: 1.2rem;
-}
-
 /* ===== GALLERY ===== */
 .gallery {
   background: white;
@@ -1594,9 +1555,6 @@ a {
   }
   .about-img-main {
     height: 300px;
-  }
-  .prog-inner {
-    grid-template-columns: 1fr;
   }
   .contact-grid {
     grid-template-columns: 1fr;

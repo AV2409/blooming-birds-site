@@ -199,3 +199,133 @@ The Reviews section was implemented as the Testimonials carousel. Restore the fo
 ```
 
 The Reviews section also used the testimonial and carousel rules in `style.css` and the testimonial carousel functions in `script.js` (`goSlide`, `nextSlide`, `prevSlide`, `startCarousel`, and `stopCarousel`). Restore the `Families` navigation links and `Parent Reviews` footer link when restoring the section.
+
+## Program Pricing and Schedules
+
+The following program markup was removed from both active pages. The program content is shared by `index.html` and `blooming-birds-daycare.html`; restore these blocks inside each matching program panel if pricing or schedules are needed again.
+
+### Pricing Blocks
+
+Restore each block after the program description and before `.prog-features`:
+
+```html
+<div class="prog-price">
+  <div class="prog-price-label">Starting from</div>
+  <div><span class="prog-price-amount">$380</span><span class="prog-price-period">/week</span></div>
+</div>
+
+<div class="prog-price">
+  <div class="prog-price-label">Starting from</div>
+  <div><span class="prog-price-amount">$320</span><span class="prog-price-period">/week</span></div>
+</div>
+
+<div class="prog-price">
+  <div class="prog-price-label">Starting from</div>
+  <div><span class="prog-price-amount">$280</span><span class="prog-price-period">/week</span></div>
+</div>
+
+<div class="prog-price">
+  <div class="prog-price-label">Starting from</div>
+  <div><span class="prog-price-amount">$180</span><span class="prog-price-period">/week</span></div>
+</div>
+```
+
+The pricing blocks used the `.prog-price`, `.prog-price-label`, `.prog-price-amount`, and `.prog-price-period` rules in `style.css`.
+
+### Schedule Columns
+
+Restore the matching schedule column after each program's `.prog-visual` block:
+
+```html
+<div class="prog-schedule">
+  <h3>Sample Daily Schedule</h3>
+  <div class="schedule-item">
+    <div class="schedule-icon">🌅</div>
+    <div class="schedule-time">7:00 – 8:00</div>
+    <div class="schedule-act">Arrival, gentle morning greeting & settling</div>
+  </div>
+  <div class="schedule-item">
+    <div class="schedule-icon">🍼</div>
+    <div class="schedule-time">8:00 – 9:30</div>
+    <div class="schedule-act">Morning feeding & individual routines</div>
+  </div>
+  <div class="schedule-item">
+    <div class="schedule-icon">🌈</div>
+    <div class="schedule-time">9:30 – 10:30</div>
+    <div class="schedule-act">Sensory play, tummy time & exploration</div>
+  </div>
+  <div class="schedule-item">
+    <div class="schedule-icon">😴</div>
+    <div class="schedule-time">10:30 – 12:00</div>
+    <div class="schedule-act">Morning nap (individualized)</div>
+  </div>
+  <div class="schedule-item">
+    <div class="schedule-icon">🥣</div>
+    <div class="schedule-time">12:00 – 1:00</div>
+    <div class="schedule-act">Lunch & bottle feeding</div>
+  </div>
+  <div class="schedule-item">
+    <div class="schedule-icon">🎵</div>
+    <div class="schedule-time">1:00 – 2:30</div>
+    <div class="schedule-act">Music, story time & lap reading</div>
+  </div>
+  <div class="schedule-item">
+    <div class="schedule-icon">😴</div>
+    <div class="schedule-time">2:30 – 4:00</div>
+    <div class="schedule-act">Afternoon nap</div>
+  </div>
+  <div class="schedule-item">
+    <div class="schedule-icon">🌻</div>
+    <div class="schedule-time">4:00 – 5:00</div>
+    <div class="schedule-act">Outdoor stroller walk & fresh air</div>
+  </div>
+  <div class="schedule-item">
+    <div class="schedule-icon">🏠</div>
+    <div class="schedule-time">5:00 – 6:00</div>
+    <div class="schedule-act">Family pickup, end-of-day report</div>
+  </div>
+</div>
+```
+
+The Toddler Adventures schedule used the same structure with these entries:
+
+```html
+<h3>Sample Daily Schedule</h3>
+<div class="schedule-item"><div class="schedule-icon">🌅</div><div class="schedule-time">7:00 – 8:30</div><div class="schedule-act">Morning arrival & free play</div></div>
+<div class="schedule-item"><div class="schedule-icon">🍌</div><div class="schedule-time">8:30 – 9:00</div><div class="schedule-act">Breakfast & morning snack</div></div>
+<div class="schedule-item"><div class="schedule-icon">🎵</div><div class="schedule-time">9:00 – 9:45</div><div class="schedule-act">Circle time, songs & storytime</div></div>
+<div class="schedule-item"><div class="schedule-icon">🌳</div><div class="schedule-time">9:45 – 11:00</div><div class="schedule-act">Outdoor play & nature exploration</div></div>
+<div class="schedule-item"><div class="schedule-icon">🎨</div><div class="schedule-time">11:00 – 11:45</div><div class="schedule-act">Arts & crafts / sensory activity</div></div>
+<div class="schedule-item"><div class="schedule-icon">🥗</div><div class="schedule-time">11:45 – 12:30</div><div class="schedule-act">Lunch & table manners practice</div></div>
+<div class="schedule-item"><div class="schedule-icon">😴</div><div class="schedule-time">12:30 – 2:30</div><div class="schedule-act">Rest time / quiet activities</div></div>
+<div class="schedule-item"><div class="schedule-icon">🏗️</div><div class="schedule-time">2:30 – 4:00</div><div class="schedule-act">STEM & building block centers</div></div>
+<div class="schedule-item"><div class="schedule-icon">🏠</div><div class="schedule-time">4:00 – 6:00</div><div class="schedule-act">Afternoon play & family pickup</div></div>
+```
+
+The Preschool Prep schedule used these entries:
+
+```html
+<h3>Sample Daily Schedule</h3>
+<div class="schedule-item"><div class="schedule-icon">🌅</div><div class="schedule-time">7:00 – 8:30</div><div class="schedule-act">Morning welcome & journaling</div></div>
+<div class="schedule-item"><div class="schedule-icon">🍎</div><div class="schedule-time">8:30 – 9:00</div><div class="schedule-act">Healthy breakfast</div></div>
+<div class="schedule-item"><div class="schedule-icon">📚</div><div class="schedule-time">9:00 – 10:00</div><div class="schedule-act">Literacy circle & phonics</div></div>
+<div class="schedule-item"><div class="schedule-icon">🔬</div><div class="schedule-time">10:00 – 10:45</div><div class="schedule-act">STEAM exploration stations</div></div>
+<div class="schedule-item"><div class="schedule-icon">🌳</div><div class="schedule-time">10:45 – 11:45</div><div class="schedule-act">Outdoor play & garden time</div></div>
+<div class="schedule-item"><div class="schedule-icon">🥗</div><div class="schedule-time">11:45 – 12:30</div><div class="schedule-act">Lunch & social skills</div></div>
+<div class="schedule-item"><div class="schedule-icon">😴</div><div class="schedule-time">12:30 – 2:00</div><div class="schedule-act">Rest & quiet reading</div></div>
+<div class="schedule-item"><div class="schedule-icon">🎨</div><div class="schedule-time">2:00 – 3:30</div><div class="schedule-act">Arts, music & creative projects</div></div>
+<div class="schedule-item"><div class="schedule-icon">🏠</div><div class="schedule-time">3:30 – 6:00</div><div class="schedule-act">Extended care & family pickup</div></div>
+```
+
+The After-School Club schedule used these entries:
+
+```html
+<h3>After-School Schedule</h3>
+<div class="schedule-item"><div class="schedule-icon">🚌</div><div class="schedule-time">2:30 – 3:30</div><div class="schedule-act">Bus pickup & afternoon snack</div></div>
+<div class="schedule-item"><div class="schedule-icon">📖</div><div class="schedule-time">3:30 – 4:30</div><div class="schedule-act">Homework & reading time</div></div>
+<div class="schedule-item"><div class="schedule-icon">🎮</div><div class="schedule-time">4:30 – 5:15</div><div class="schedule-act">Enrichment club of choice</div></div>
+<div class="schedule-item"><div class="schedule-icon">🌳</div><div class="schedule-time">5:15 – 5:50</div><div class="schedule-act">Outdoor free play</div></div>
+<div class="schedule-item"><div class="schedule-icon">🏠</div><div class="schedule-time">5:50 – 6:00</div><div class="schedule-act">Family pickup — latest 6:00 PM</div></div>
+```
+
+The schedule columns used the `.prog-schedule`, `.schedule-item`, `.schedule-icon`, `.schedule-time`, and `.schedule-act` rules in `style.css`. Restore `.prog-inner` to a two-column grid when restoring the schedule columns.
