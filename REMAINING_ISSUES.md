@@ -38,5 +38,5 @@ This file tracks unresolved items for future work. `index.html` is the productio
 
 - Blog, Reviews, and FAQ sections were removed from the active pages.
 - The Holidays row was removed from enrollment hours.
-- Contact details were updated to Blooming Birds Childcare, 33214 Westbury Ave, Abbotsford BC V2S 1C2, 778-632-2525, and BloomingBirds25@gmail.com.
+- Contact details were updated to Blooming Birds Childcare, 33214 Westbury Ave, Abbotsford BC V2S 1C2, 778-632-2525, and bloomingbirds25@gmail.com.
 - Unsupported Stripe security claims were removed.
