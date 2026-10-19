@@ -329,3 +329,14 @@ The After-School Club schedule used these entries:
 ```
 
 The schedule columns used the `.prog-schedule`, `.schedule-item`, `.schedule-icon`, `.schedule-time`, and `.schedule-act` rules in `style.css`. Restore `.prog-inner` to a two-column grid when restoring the schedule columns.
+
+### Removed Program Features
+
+The following feature items were removed from the Preschool Prep and After-School Club cards:
+
+```html
+<li>Weekly STEAM projects</li>
+<li>School bus pickup available</li>
+<li>Enrichment clubs (coding, art, cooking)</li>
+<li>Healthy snacks included</li>
+```
