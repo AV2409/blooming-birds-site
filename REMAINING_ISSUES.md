@@ -10,7 +10,7 @@ This file tracks unresolved items for future work. `index.html` is the productio
 
 ## High
 
-- **Marketing claims need verification**: ratings, licensing, insurance, First Aid certification, background checks, pricing, and staff credentials are hard-coded in `index.html:112-127`, `261-306`, and `983-985`.
+- **Marketing claims need verification**: ratings, licensing, insurance, First Aid certification, background checks, and staff credentials are hard-coded in `index.html:112-127`, `261-306`, and `983-985`.
 - **Firebase depends on external CDN modules**: `index.html:1050-1070` requires Google CDN availability and client-side initialization before form storage works.
 - **Placeholder links remain**: social, legal, and some contact links still use `href="#"` in `index.html:921-924` and `1011-1023`.
 - **The legacy page duplicates the application**: `blooming-birds-daycare.html` can diverge from `index.html` and should either be repaired, redirected, or retired.

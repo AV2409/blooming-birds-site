@@ -211,7 +211,7 @@ Available programs:
 - **No Firestore security rules are included**: access control cannot be reviewed or safely maintained from this repository.
 - **Firebase initialization is external and failure-prone**: the site depends on CDN module availability and client-side initialization at runtime.
 - **The legacy page duplicates the entire application**: shared content and behavior can diverge and fixes may only reach one entry point.
-- **Many claims appear unverified**: ratings, accreditation, family counts, staff credentials, and pricing are hard-coded marketing content.
+- **Many claims appear unverified**: ratings, accreditation, family counts, and staff credentials are hard-coded marketing content.
 - **Legal and social links are placeholders**: privacy policy, terms, sitemap, accessibility, and social links frequently use `href="#"`.
 
 ### Medium
