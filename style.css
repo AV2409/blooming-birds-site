@@ -1004,6 +1004,7 @@ a {
 }
 .gallery-overlay {
   position: absolute;
+  z-index: 2;
   inset: 0;
   background: linear-gradient(
     180deg,
