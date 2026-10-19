@@ -2,6 +2,20 @@
 
 This file preserves the Blog and Reviews sections removed from the active pages. The archived markup was shared by `index.html` and `blooming-birds-daycare.html`.
 
+## Gallery
+
+The following gallery cards were removed from both active pages because approved photos are not currently available. The retained gallery uses the five supplied images in `assets/gallery/`.
+
+| Planned item | Planned filename | Removal reason |
+|---|---|---|
+| Garden Discovery Time | `03-garden-discovery.webp` | No approved garden or nature photo available |
+| Healthy, Colorful Lunches | `05-healthy-lunch.webp` | No approved meal or snack photo available |
+| Exploring Nature Together | `07-nature-exploration.webp` | No approved outdoor nature photo available |
+| STEM Discovery Lab | `08-stem-discovery.webp` | No approved STEM activity photo available |
+| Active Outdoor Play | `10-outdoor-play.webp` | No approved outdoor play photo available |
+| Sensory Bin Fun | `11-sensory-bin.webp` | No approved sensory-play photo available |
+| Yoga & Mindfulness | `12-yoga-mindfulness.webp` | No approved yoga or quiet-activity photo available |
+
 ## Blog
 
 Restore the following markup before the `CTA STRIP` comment:
