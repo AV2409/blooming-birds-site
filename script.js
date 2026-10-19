@@ -478,6 +478,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===== GALLERY LIGHTBOX =====
 const galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
 
+document.querySelectorAll(".gallery-img img").forEach((image) => {
+  const markLoaded = () => image.classList.add("is-loaded");
+
+  if (image.complete && image.naturalWidth > 0) markLoaded();
+  else image.addEventListener("load", markLoaded, { once: true });
+});
+
 if (galleryItems.length) {
   const galleryLightbox = document.createElement("div");
   galleryLightbox.className = "gallery-lightbox";
