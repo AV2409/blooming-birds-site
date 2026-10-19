@@ -980,6 +980,7 @@ a {
   display: grid;
   place-items: center;
   font-size: 3.5rem;
+  transition: transform 0.4s ease;
 }
 .gallery-img img {
   position: relative;
@@ -989,13 +990,13 @@ a {
   display: block;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.4s ease;
 }
 .gallery-img img.is-loaded {
   opacity: 1;
 }
-}
-.gallery-item:hover .gallery-img {
+.gallery-item:hover .gallery-placeholder,
+.gallery-item:hover .gallery-img img.is-loaded {
   transform: scale(1.07);
 }
 .gallery-item:focus-visible {
@@ -1798,7 +1799,8 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .gallery-img,
   .gallery-overlay,
-  .gallery-img img {
+  .gallery-img img,
+  .gallery-placeholder {
     transition: none;
   }
   .gallery-lightbox-dialog {
