@@ -19,7 +19,7 @@
   <!-- OPEN GRAPH (Social + WhatsApp Preview) -->
   <meta property="og:title" content="Blooming Birds Childcare | Abbotsford BC">
   <meta property="og:description"
-    content="Premium daycare, preschool, and after-school care in Abbotsford BC for children aged 6 months to 12 years.">
+    content="Premium daycare, preschool, and before and after school care in Abbotsford BC for children aged 6 months to 12 years.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_CA">
   <meta property="og:url" content="https://bloomingbirds.netlify.app/">
@@ -36,7 +36,7 @@
     "@type": "ChildCare",
     "name": "Blooming Birds Childcare",
     "url": "https://bloomingbirds.netlify.app",
-    "description": "Blooming Birds Childcare in Abbotsford BC provides loving care, toddler programs, preschool education, and after-school care in a safe, nurturing, Montessori-inspired environment for children aged 6 months to 12 years.",
+    "description": "Blooming Birds Childcare in Abbotsford BC provides loving care, toddler programs, preschool education, and before and after school care in a safe, nurturing, Montessori-inspired environment for children aged 6 months to 12 years.",
     "areaServed": {
       "@type": "Place",
       "name": "Abbotsford, British Columbia, Canada"
@@ -114,7 +114,7 @@
         <h1 class="hero-title">Blooming Birds Childcare in <span class="highlight">Abbotsford, BC</span></h1>
         <p class="hero-tagline">
           Where little wings take flight 🐦 — Blooming Birds provides loving infant care, engaging toddler programs, and
-          joyful preschool learning and after-school care in a safe, nurturing, Montessori-inspired environment for
+          joyful preschool learning and before and after school care in a safe, nurturing, Montessori-inspired environment for
           children aged 6 months to 12 years in Abbotsford, BC.
         </p>
         <div class="hero-btns">
@@ -324,8 +324,9 @@
 
       <p class="section-sub" style="margin-top:10px;">
         Blooming Birds Childcare lovingly cares for children across Abbotsford and nearby communities.
-        From gentle infant care to joyful preschool learning, we provide a safe, nurturing, and Montessori-inspired
-        environment where little ones grow with confidence, curiosity, and happiness.
+         From gentle infant care to joyful preschool learning, we provide a safe, nurturing, and Montessori-inspired
+         environment where little ones grow with confidence, curiosity, and happiness. We also encourage outdoor play
+         so children can explore, stay active, and connect with the world around them.
       </p>
 
       <div style="display:flex;justify-content:center;gap:18px;margin-top:28px;flex-wrap:wrap;">
@@ -376,7 +377,7 @@
         <button class="prog-tab active" onclick="showProgram('infant', this)">👶 Infant Care</button>
         <button class="prog-tab" onclick="showProgram('toddler', this)">🦒 Toddler Adventures</button>
         <button class="prog-tab" onclick="showProgram('preschool', this)">🎒 Preschool Prep</button>
-        <button class="prog-tab" onclick="showProgram('afterschool', this)">🌟 After-School Club</button>
+        <button class="prog-tab" onclick="showProgram('afterschool', this)">🌟 Before and After School Club</button>
       </div>
 
       <!-- Infant Panel -->
@@ -443,14 +444,14 @@
         </div>
       </div>
 
-      <!-- After School Panel -->
+      <!-- Before and After School Panel -->
       <div class="prog-panel" id="prog-afterschool">
         <div class="prog-inner">
           <div class="prog-visual">
             <div class="prog-emoji">🌟</div>
             <div class="prog-age">Ages 5 – 12 years</div>
-            <h3 class="prog-name">After-School Club</h3>
-            <p class="prog-desc">A homework-friendly, fun-filled afternoon program for school-age kids with enrichment
+            <h3 class="prog-name">Before and After School Club</h3>
+            <p class="prog-desc">A homework-friendly, fun-filled morning and afternoon program for school-age kids with enrichment
               activities, supervised homework time, and free play in a safe environment.</p>
             <ul class="prog-features">
               <li>Supervised homework & reading time</li>
@@ -529,8 +530,7 @@
         style="background:var(--peach-light);color:var(--peach-dark);display:block;text-align:center;width:fit-content;margin:0 auto 16px;">
         📋 Enrollment</div>
       <h2 class="section-title">Ready to Join Our Flock? 🐦</h2>
-      <p class="section-sub">Enrollment is simple and takes just a few minutes. Limited spots available — reserve yours
-        today!</p>
+      <p class="section-sub">Contact us to learn more about enrollment, availability, and our hours of operation.</p>
       <div class="enroll-grid">
         <div class="enroll-info">
           <div class="enroll-hours">
@@ -540,92 +540,6 @@
             <div class="hours-row"><span class="hours-label">Saturday</span><span class="hours-val">Closed</span></div>
             <div class="hours-row"><span class="hours-label">Sunday</span><span class="hours-val">Closed</span></div>
           </div>
-        </div>
-        <div class="enroll-form">
-          <div class="form-title">✨ Start Your Enrollment</div>
-          <form onsubmit="submitForm(event)" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Child's First Name</label>
-                <input name="childFirstName" id="childFirstName" type="text" class="form-input" placeholder="Emma"
-                  required>
-                <span class="form-error" id="childFirstName-error"></span>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Child's Last Name</label>
-                <input name="childLastName" id="childLastName" type="text" class="form-input" placeholder="Johnson"
-                  required>
-                <span class="form-error" id="childLastName-error"></span>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Child's Date of Birth</label>
-                <input name="dob" type="date" class="form-input" required id="dobInput">
-                <span class="form-error" id="dobInput-error"></span>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Program Interest</label>
-                <select name="program" id="program" class="form-select" required>
-                  <option value="">Select program…</option>
-                  <option>👶 Infant Care (6-18m)</option>
-                  <option>🦒 Toddler Adventures (18m-3y)</option>
-                  <option>🎒 Preschool Prep (3-5y)</option>
-                  <option>🌟 After-School Club</option>
-                </select>
-                <span class="form-error" id="program-error"></span>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Parent/Guardian Name</label>
-                <input name="parentName" id="parentName" type="text" class="form-input" placeholder="Jessica Johnson"
-                  required>
-                <span class="form-error" id="parentName-error"></span>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Phone Number</label>
-                <input name="phone" id="phone" type="tel" class="form-input" placeholder="778-632-2525" required>
-                <span class="form-error" id="phone-error"></span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input name="email" id="email" type="email" class="form-input" placeholder="jessica@email.com" required>
-              <span class="form-error" id="email-error"></span>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Preferred Start Date</label>
-                <input name="startDate" id="startDate" type="date" class="form-input">
-                <span class="form-error" id="startDate-error"></span>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Schedule a Tour</label>
-                <input name="tourDate" id="tourDate" type="date" class="form-input">
-                <span class="form-error" id="tourDate-error"></span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Special Needs / Allergies / Notes</label>
-              <textarea name="notes" class="form-textarea"
-                placeholder="Any information that helps us prepare for your child…"></textarea>
-            </div>
-
-            <label class="form-checkbox">
-              <input type="checkbox" id="termsCheckbox">
-              <span>I agree to Blooming Birds' Terms & Privacy Policy</span>
-            </label>
-            <span class="form-error" id="termsCheckbox-error"></span>
-
-            <button type="submit" class="btn btn-primary btn-lg form-submit">🐦 Submit Application</button>
-          </form>
-
         </div>
       </div>
     </div>
@@ -704,46 +618,11 @@
             <a href="https://facebook.com/share/1ChUZWv19r" target="_blank" rel="noopener noreferrer" class="social-btn" style="background:var(--sky-light);" aria-label="Facebook"><span class="social-icon" aria-hidden="true">💙</span><span>Facebook</span></a>
           </div>
         </div>
-        <div class="contact-form-side">
+        <div class="contact-chat-side">
           <div class="quick-contact">
             <h3>💬 Live Chat Available!</h3>
             <p>Have a quick question? Our team is online weekdays 8AM–5PM to chat instantly.</p>
             <button class="btn btn-secondary" onclick="toggleChat()">Start Live Chat →</button>
-          </div>
-          <div class="enroll-form" style="border:none;padding:0;box-shadow:none;">
-            <div class="form-title">Send Us a Message</div>
-            <form onsubmit="submitContact(event)" novalidate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="contactName">Your Name</label>
-                  <input type="text" name="contactName" id="contactName" class="form-input"
-                    placeholder="Jessica Johnson" required>
-                  <span class="form-error" id="contactName-error"></span>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="contactEmail">Email</label>
-                  <input type="email" name="contactEmail" id="contactEmail" class="form-input"
-                    placeholder="jessica@email.com" required>
-                  <span class="form-error" id="contactEmail-error"></span>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="contactSubject">Subject</label>
-                <select name="contactSubject" id="contactSubject" class="form-select">
-                  <option>Schedule a Tour</option>
-                  <option>Enrollment Question</option>
-                  <option>Pricing Info</option>
-                  <option>General Inquiry</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="contactMessage">Message</label>
-                <textarea name="contactMessage" id="contactMessage" class="form-textarea"
-                  placeholder="Hi! I'd love to learn more about…" required></textarea>
-                <span class="form-error" id="contactMessage-error"></span>
-              </div>
-              <button type="submit" class="btn btn-green btn-lg form-submit">📨 Send Message</button>
-            </form>
           </div>
         </div>
       </div>
@@ -778,7 +657,7 @@
             <li><a href="#programs">👶 Infant Care (6-18m)</a></li>
             <li><a href="#programs">🦒 Toddler Adventures</a></li>
             <li><a href="#programs">🎒 Preschool Prep</a></li>
-            <li><a href="#programs">🌟 After-School Club</a></li>
+            <li><a href="#programs">🌟 Before and After School Club</a></li>
             <li><a href="#enrollment">Enrollment Info</a></li>
             <li><a href="#enrollment">Pricing & Tuition</a></li>
           </ul>
@@ -809,9 +688,6 @@
     </div>
   </footer>
 
-  <!-- ===== NOTIFICATION ===== -->
-  <div id="notification" role="status" aria-live="polite" aria-atomic="true" class="notification"></div>
-
   <!-- ===== LIVE CHAT ===== -->
   <div class="live-chat">
     <div class="chat-bubble" id="chatBubble">
@@ -825,28 +701,6 @@
 
   <!-- ===== SCROLL BIRD ===== -->
   <div class="scroll-bird" id="scrollBird">🐦</div>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp }
-      from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDsVCUOkjqwHn9_kZ7HIb_1Plp283vmL4o",
-      authDomain: "blooming-birds.firebaseapp.com",
-      projectId: "blooming-birds",
-      storageBucket: "blooming-birds.firebasestorage.app",
-      messagingSenderId: "550022477489",
-      appId: "1:550022477489:web:fc96d3431bb6c783d2d490"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    // Make Firestore usable in script.js
-    window.db = db;
-    window.fb = { collection, addDoc, serverTimestamp };
-  </script>
 
   <script src="script.js" defer></script>
 

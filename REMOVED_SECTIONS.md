@@ -354,3 +354,52 @@ The following feature items were removed from the Preschool Prep and After-Schoo
 <li>Enrichment clubs (coding, art, cooking)</li>
 <li>Healthy snacks included</li>
 ```
+
+## Removed Forms
+
+The enrollment and contact forms were removed from both `index.html` and
+`blooming-birds-daycare.html`. The surrounding enrollment information, contact
+details, and live-chat card remain active.
+
+### Enrollment Form
+
+The removed enrollment form was inside `section#enrollment`, in the
+`.enroll-form` panel beside the hours card. It used `onsubmit="submitForm(event)"`
+and contained these controls and references:
+
+- `childFirstName`, `childLastName`, `dobInput`, `program`, `parentName`, `phone`, and `email`.
+- `startDate`, `tourDate`, `notes`, and `termsCheckbox`.
+- Error elements ending in `-error` for the validated fields.
+- The `Before and After School Club` program option.
+- The `🐦 Submit Application` submit button.
+
+The removed enrollment workflow validated names, program age ranges, dates,
+contact information, and terms acceptance before writing to Firebase and the
+Google Apps Script endpoint.
+
+### Contact Form
+
+The removed contact form was inside `section#contact`, below the live-chat card.
+It used `onsubmit="submitContact(event)"` and contained these controls and
+references:
+
+- `contactName`, `contactEmail`, `contactSubject`, and `contactMessage`.
+- Error elements for `contactName`, `contactEmail`, and `contactMessage`.
+- The `📨 Send Message` submit button.
+
+The removed contact workflow validated the name, email, and message before
+writing to Firebase and the Google Apps Script endpoint.
+
+### Removed Form Dependencies
+
+The following form-only code and markup references were removed from the live
+pages and shared files:
+
+- Firebase module imports, embedded Firebase configuration, and Firestore handles.
+- The shared `submitForm`, `submitContact`, age-range, date-bound, and validation-helper functions.
+- The `#notification` success-toast container used by form submissions.
+- Form-only CSS selectors: `.enroll-form`, `.form-title`, `.form-group`, `.form-row`, `.form-label`, `.form-input`, `.form-select`, `.form-textarea`, `.form-error`, `.form-checkbox`, `.form-submit`, `.form-note`, and `.contact-form-side`.
+- The `enrollments` and `messages` client-side submission paths.
+
+The Apps Script files remain archived in `apps-script/` for reference and are no
+longer called by the website.
